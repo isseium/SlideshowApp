@@ -95,11 +95,13 @@ class ViewController: UIViewController {
     
     @IBAction func unwind(segue: UIStoryboardSegue) {
         // 要件「戻るボタンがタップされると、スライドショー画面に戻り、同じ画像を表示してください」のため
-        stopSlideshow()
-        let detailController:DetailController = segue.sourceViewController as! DetailController
-        currentImageIndex = detailController.currentImageIndex
-        refreshImageView()
-        startSlideshow()
+        if(timer != nil && timer.valid){
+            stopSlideshow()
+            let detailController:DetailController = segue.sourceViewController as! DetailController
+            currentImageIndex = detailController.currentImageIndex
+            refreshImageView()
+            startSlideshow()
+        }
     }
 }
 
